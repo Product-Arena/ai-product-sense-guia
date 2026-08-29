@@ -51,6 +51,46 @@
 </li>
 </ul>
 </section>
+<section class="concept" id="apendice-publicar-painel">
+<h3>Publicar o painel (GitHub + Vercel)</h3>
+<p>Conteúdo adicional depois do Build. O exercício pede um HTML que abre no browser; este caminho coloca esse arquivo num <strong>link público</strong> — útil para mostrar no time ou guardar o artefato do dia. Não é obrigatório na sala.</p>
+<p>Fluxo: o HTML mora no <strong>GitHub</strong>; a <strong>Vercel</strong> lê o repositório e publica. Cada push novo atualiza o site.</p>
+
+<h4>1. Preparar o arquivo</h4>
+<ol>
+<li>Tenha o painel salvo no computador (ex.: <code>painel.html</code> baixado do Claude/ChatGPT ou gravado pelo Cursor).</li>
+<li>Renomeie para <code>index.html</code>. Assim a URL da Vercel abre o painel na raiz, sem path extra.</li>
+<li>Se o painel tiver imagens ou CSSs separados, mantenha tudo na mesma pasta. Um único HTML com CSS inline (como no exercício) é o caminho mais simples.</li>
+</ol>
+
+<h4>2. Subir no GitHub</h4>
+<ol>
+<li>Crie uma conta em <a href="https://github.com/" rel="noopener noreferrer" target="_blank">github.com</a> (se ainda não tiver).</li>
+<li><strong>New repository</strong> — nome livre (ex.: <code>painel-arena-cash</code>). Pode ser público ou privado. Não marque “Add a README” se for só colar o HTML depois.</li>
+<li>Entre no repositório vazio → <strong>Add file → Upload files</strong> → arraste o <code>index.html</code> → <strong>Commit changes</strong>.</li>
+<li>No Cursor (opcional): peça para criar o repo, gravar o <code>index.html</code> e dar <code>git push</code>. O resultado é o mesmo.</li>
+</ol>
+<p class="tip">Não suba chaves, tokens nem dados reais de cliente. Os kits Arena do curso são fictícios e podem ir no repo.</p>
+
+<h4>3. Ligar na Vercel</h4>
+<ol>
+<li>Crie uma conta em <a href="https://vercel.com/signup" rel="noopener noreferrer" target="_blank">vercel.com</a> (login com GitHub é o mais rápido).</li>
+<li><strong>Add New… → Project</strong> → importe o repositório do painel.</li>
+<li>Em Framework Preset, deixe <strong>Other</strong> (site estático). Não precisa de Build Command nem Output Directory para um HTML na raiz.</li>
+<li><strong>Deploy</strong>. Em cerca de um minuto aparece uma URL do tipo <code>seu-projeto.vercel.app</code>.</li>
+</ol>
+
+<h4>4. Atualizar depois</h4>
+<ol>
+<li>Edite o HTML (você ou o agente).</li>
+<li>No GitHub: <strong>Add file → Upload files</strong> de novo (substitui o <code>index.html</code>) ou faça commit/push pelo Cursor.</li>
+<li>A Vercel detecta o push e publica sozinha. O link continua o mesmo.</li>
+</ol>
+<p>Docs oficiais:
+<a href="https://vercel.com/docs/getting-started-with-vercel/import" rel="noopener noreferrer" target="_blank">Importar projeto na Vercel</a>
+·
+<a href="https://docs.github.com/en/repositories/creating-and-managing-repositories/quickstart-for-repositories" rel="noopener noreferrer" target="_blank">Quickstart de repositório no GitHub</a>.</p>
+</section>
 <section class="concept">
 <h3>Skills</h3>
 <ul>

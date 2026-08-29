@@ -3,7 +3,9 @@
 Site estático do guia de sala (Product Arena). Think → Augment → Connect → Build.
 
 **Repositório:** [Product-Arena/ai-product-sense-guia](https://github.com/Product-Arena/ai-product-sense-guia)  
-**Produção:** o deploy vai para a Vercel a cada push em `main`.
+**Produção:** [https://ai-product-sense-guia.vercel.app](https://ai-product-sense-guia.vercel.app)
+
+Cada push em `main` publica de novo na Vercel.
 
 Cópia de trabalho no workspace do Lucas: `learning/ai-product-sense/guia-do-aluno/`.  
 Não edite o guia do [Cursor na prática](https://github.com/Product-Arena/cursor-para-pms).

@@ -165,21 +165,129 @@ Nossa confiança (0 a 100): [ ]</code></pre>
 <p class="block-quote">IA e agentes ampliando essa capacidade.</p>
 </header>
 <section class="concept" id="augment-cases">
-<h3>Material do case</h3>
-<p>Baixe o kit da <strong>Arena Cash</strong> para a dinâmica da manhã.</p>
+<h3>Material</h3>
+<p>A skill vem <strong>pronta</strong>. O kit da Cash é o case. Não redesenhem o app. Não troquem pelo Pipeline do Think.</p>
 <div class="kit-grid">
+<a class="kit-item" href="assets/product-sense-devils-advocate.zip" download>
+<span class="kit-icon">ZIP</span>
+<div>
+<strong>Skill Devil's Advocate</strong>
+<span>Pasta product-sense-devils-advocate + SKILL.md</span>
+</div>
+<span class="kit-size">1 KB</span>
+</a>
+<a class="kit-item" href="assets/product-sense-devils-advocate.md" download>
+<span class="kit-icon">MD</span>
+<div>
+<strong>SKILL.md</strong>
+<span>Mesmo conteúdo, para colar no Claude ou no ChatGPT</span>
+</div>
+<span class="kit-size">2 KB</span>
+</a>
 <a class="kit-item" href="assets/case-arena-cash.zip" download>
 <span class="kit-icon">ZIP</span>
 <div>
 <strong>Arena Cash</strong>
-<span>Fintech · memo, organograma, transcrições e dados Q1</span>
+<span>Fintech · conta e cartão · memo, organograma, transcrições e dados</span>
 </div>
-<span class="kit-size">87 KB</span>
+<span class="kit-size">80 KB</span>
 </a>
 </div>
 </section>
 <section class="exercises" id="augment-exercicios">
-<p class="block-placeholder">Exercícios deste bloco entram aqui.</p>
+<p class="tip">Mesmo músculo do Think (Pipeline). Outro produto (Cash). Agora a habilidade mora num arquivo — vocês <strong>não</strong> escrevem os 7 guardrails do zero. Isso fica para o Build, com outra skill.</p>
+
+<div class="exercise-flat" id="ex-augment-01-da" data-exercise-num="01">
+<div class="exercise-flat__meta">
+<span class="ex-num">01</span>
+<span class="ex-time">~20 min</span>
+</div>
+<p class="ex-obj"><strong>Objetivo:</strong> instalar o Devil's Advocate e tensionar a tese de onboarding da <strong>Arena Cash</strong>. Número certo ≠ conclusão de causalidade.</p>
+
+<div class="step-block">
+<div class="step-block-head">
+<span class="step-block-num">O case</span>
+</div>
+<div class="step-block-body">
+<p>A <strong>Arena Cash</strong> é fintech de conta e cartão. No Q1 os signups bateram a meta (78k vs 60k). O problema é depois do cadastro.</p>
+<table class="matrix">
+<thead>
+<tr><th></th><th>Antes</th><th>Agora</th></tr>
+</thead>
+<tbody>
+<tr><td>Ativação (1ª transação no cartão em 30d)</td><td>38%</td><td>24%</td></tr>
+<tr><td>Churn mensal</td><td>4,2%</td><td>6,8%</td></tr>
+<tr><td>NPS</td><td>52</td><td>41</td></tr>
+<tr><td>CAC</td><td>R$ 120</td><td>R$ 180</td></tr>
+</tbody>
+</table>
+<p><strong>Tese do PM de Onboarding:</strong> “Vamos expandir o novo fluxo de onboarding (mais IA na 1ª experiência). Signups cresceram; a queda de ativação pede mais onboarding. Meta Q2: ativação ~40%.”</p>
+</div>
+</div>
+
+<div class="step-block">
+<div class="step-block-head">
+<span class="step-block-num">1</span>
+<span class="step-block-time">5–8 min</span>
+<h4 class="step-block-title">Instalar a skill</h4>
+</div>
+<div class="step-block-body">
+<ul>
+<li><strong>Claude:</strong> importe o ZIP como skill. Plano B: anexe ou cole o <code>SKILL.md</code>.</li>
+<li><strong>ChatGPT:</strong> cole o <code>SKILL.md</code> nas instruções do Project.</li>
+<li><strong>Cursor:</strong> descompacte o ZIP em <code>.cursor/skills/product-sense-devils-advocate/</code> (o nome da pasta tem que bater com o <code>name:</code> do arquivo).</li>
+</ul>
+<p>Pronto quando o agente responde no formato da skill (O que está sólido / Premissas / Perguntas / …), não com um texto genérico.</p>
+</div>
+</div>
+
+<div class="step-block">
+<div class="step-block-head">
+<span class="step-block-num">2</span>
+<span class="step-block-time">8–10 min</span>
+<h4 class="step-block-title">Aplicar no Arena Cash</h4>
+</div>
+<div class="step-block-body">
+<p>Complete a leitura humana e a decisão <strong>antes</strong> de colar. Anexar o kit é opcional — os números da mesa já estão no prompt.</p>
+<div class="prompt-stack">
+<p class="prompt-label"><span class="pa-eyebrow pa-eyebrow--red">Prompt</span></p>
+<pre class="code-block code-block--prompt"><code>Use a skill product-sense-devils-advocate.
+
+Contexto (Arena Cash — fintech de conta e cartão):
+- Signups Q1 acima da meta (78k vs 60k); o problema é pós-cadastro
+- Ativação (1ª transação no cartão em 30d): 38% → 24%
+- Churn mensal: 4,2% → 6,8%
+- NPS: 52 → 41
+- CAC: R$120 → R$180
+- LTV/CAC: ~4× → ~1,6×
+
+Tese do PM de Onboarding: expandir o novo fluxo de onboarding (mais IA na 1ª experiência) porque signups cresceram e a ativação caiu; meta Q2 ativação ~40%.
+
+Minha leitura humana: [o que eu acho que está acontecendo]
+Decisão que estamos inclinados a tomar: [expandir / não expandir / gerar evidência]
+
+Aplique os 7 guardrails. Não invente dados. Formato de saída da skill.</code></pre>
+</div>
+<p>Se a skill não carregou, cole o mesmo contexto e, no lugar da primeira linha, o prompt curto do Think (“Atue como Devil's Advocate…”).</p>
+</div>
+</div>
+
+<div class="step-block">
+<div class="step-block-head">
+<span class="step-block-num">Debrief</span>
+<span class="step-block-time">4–5 min</span>
+<h4 class="step-block-title">O que guardar</h4>
+</div>
+<div class="step-block-body">
+<ul>
+<li>A IA fez alguma pergunta que vocês não fizeram?</li>
+<li>Ela fez alguma crítica inteligente que <strong>não</strong> se sustenta?</li>
+<li>A decisão mudou? Expandir / não expandir / gerar evidência?</li>
+</ul>
+<p class="tip">Não redesenhar o onboarding agora. O Devil's Advocate não decide por vocês.</p>
+</div>
+</div>
+</div>
 </section>
 </article>
 
@@ -189,26 +297,56 @@ Nossa confiança (0 a 100): [ ]</code></pre>
 <h2>Connect</h2>
 <p class="block-quote">Da decisão de produto até o dinheiro.</p>
 </header>
-<section class="exercises" id="connect-exercicios">
-<p class="block-placeholder">Exercícios deste bloco entram aqui.</p>
+<section class="concept" id="connect-mapas">
+<p>O Dudu mostra o caminho do dinheiro nos slides. Os três mapas da casa — vocês aplicam um deles no Build, no kit que escolherem.</p>
+<div class="matrix-wrap">
+<table class="matrix">
+<thead>
+<tr><th>Empresa</th><th>Input</th><th>Output (leading)</th><th>Outcome</th><th>Impact (lagging)</th></tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Match</strong></td>
+<td>Matching inteligente</td>
+<td>% busca → contato com o recomendado</td>
+<td>Busca → contratação</td>
+<td>GMV × take rate</td>
+</tr>
+<tr>
+<td><strong>Pipeline</strong></td>
+<td>Onboarding assistido</td>
+<td>% contas com pipeline operando em 7d</td>
+<td>Adoção (critério interno)</td>
+<td>NRR da coorte</td>
+</tr>
+<tr>
+<td><strong>Cash</strong></td>
+<td>Jornada guiada no cartão</td>
+<td>% uso recorrente nas primeiras semanas</td>
+<td>% cartão principal</td>
+<td>Interchange por cliente ativo</td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 </article>
 
 <article class="block" id="bloco-build">
 <header class="block-head">
-<span class="block-pill">B U I L D · 16h–17h30</span>
+<span class="block-pill">B U I L D · 16h–17h</span>
 <h2>Build</h2>
-<p class="block-quote">Construindo mais capacidades com IA.</p>
+<p class="block-quote">O sistema que faz o dia virar rotina.</p>
 </header>
 <section class="concept" id="build-cases">
-<h3>Material dos cases</h3>
-<p>Escolha o kit mais perto do seu negócio. Cash é o mesmo da manhã.</p>
+<h3>Escolha o case</h3>
+<p>Baixe o kit mais perto do seu negócio. <strong>Arena Cash</strong> é o mesmo da manhã (conta e cartão).</p>
 <div class="kit-grid">
 <a class="kit-item" href="assets/case-arena-match.zip" download>
 <span class="kit-icon">ZIP</span>
 <div>
 <strong>Arena Match</strong>
-<span>Marketplace</span>
+<span>Marketplace de serviços</span>
 </div>
 <span class="kit-size">64 KB</span>
 </a>
@@ -216,7 +354,7 @@ Nossa confiança (0 a 100): [ ]</code></pre>
 <span class="kit-icon">ZIP</span>
 <div>
 <strong>Arena Pipeline</strong>
-<span>SaaS</span>
+<span>SaaS B2B de vendas</span>
 </div>
 <span class="kit-size">68 KB</span>
 </a>
@@ -224,14 +362,213 @@ Nossa confiança (0 a 100): [ ]</code></pre>
 <span class="kit-icon">ZIP</span>
 <div>
 <strong>Arena Cash</strong>
-<span>Fintech · mesmo kit do Augment</span>
+<span>Fintech · conta e cartão</span>
 </div>
-<span class="kit-size">87 KB</span>
+<span class="kit-size">80 KB</span>
+</a>
+</div>
+</section>
+<section class="concept" id="build-como-criar">
+<h3>Como criar uma skill</h3>
+<p>No ChatGPT e no Claude você <strong>não</strong> escreve o arquivo na mão. Pede para o próprio produto gravar. Pause o vídeo se precisar acompanhar o clique.</p>
+<div class="two-col">
+<div>
+<p class="tutorial-tool">ChatGPT</p>
+<ol>
+<li>Na barra lateral, abra <strong>Plugins</strong>.</li>
+<li>Vá na aba <strong>Skills</strong>.</li>
+<li>Clique em <strong>Add</strong> (canto superior direito).</li>
+<li>Abre um chat com o Skill Creator. Cole o prompt do exercício.</li>
+</ol>
+<figure class="media-gif-slot media-gif-slot--playable">
+<video
+  class="media-gif-slot__video"
+  src="assets/creating-skill-chatgpt.mp4"
+  autoplay
+  muted
+  loop
+  playsinline
+  controls
+  preload="metadata"
+  width="720"
+  aria-label="ChatGPT: Plugins, aba Skills, botão Add, chat do Skill Creator"
+>
+  Seu navegador não reproduz vídeo.
+</video>
+<figcaption class="media-gif-slot__caption">Plugins → Skills → Add → chat do Skill Creator.</figcaption>
+</figure>
+</div>
+<div>
+<p class="tutorial-tool">Claude</p>
+<ol>
+<li>Na barra lateral, abra <strong>Customize</strong> (ou Settings).</li>
+<li>Abra <strong>Skills</strong>.</li>
+<li><strong>Add</strong> → <strong>Create with Claude</strong>.</li>
+<li>O chat já vem com o skill-creator. Cole o prompt do exercício.</li>
+</ol>
+<figure class="media-gif-slot media-gif-slot--playable">
+<video
+  class="media-gif-slot__video"
+  src="assets/creating-skill-claude.mp4"
+  autoplay
+  muted
+  loop
+  playsinline
+  controls
+  preload="metadata"
+  width="720"
+  aria-label="Claude: Customize, Skills, Add, Create with Claude"
+>
+  Seu navegador não reproduz vídeo.
+</video>
+<figcaption class="media-gif-slot__caption">Customize → Skills → Add → Create with Claude.</figcaption>
+</figure>
+<p class="tip">Para importar um ZIP (Devil's Advocate da manhã ou a skill de exemplo abaixo): <strong>Add → Upload skill</strong>. No exercício, use <strong>Create with Claude</strong>.</p>
+</div>
+</div>
+<h3>Skill de exemplo (referência do bloco 4)</h3>
+<p>Skill que o Lucas validou no GPT: mesmo job do exercício (caminho até o dinheiro). Folheiem o <code>SKILL.md</code> e o <code>references/</code>. <strong>Não entreguem este ZIP como se fosse o de vocês</strong> — o exercício é criar a skill, não baixar.</p>
+<div class="kit-grid">
+<a class="kit-item" href="assets/map-product-impact.zip" download>
+<span class="kit-icon">ZIP</span>
+<div>
+<strong>map-product-impact</strong>
+<span>SKILL.md + alavancas econômicas + openai.yaml</span>
+</div>
+<span class="kit-size">5 KB</span>
 </a>
 </div>
 </section>
 <section class="exercises" id="build-exercicios">
-<p class="block-placeholder">Exercícios deste bloco entram aqui.</p>
+<p class="tip">Individual (cada um constrói a própria skill). Sentados em trios — podem trocar ideia. Claude, ChatGPT ou Cursor. O Devil's Advocate da manhã <strong>fica</strong>; esta skill empilha nele.</p>
+
+<div class="exercise-flat" id="ex-build-01-painel" data-exercise-num="01">
+<div class="exercise-flat__meta">
+<span class="ex-num">01</span>
+<span class="ex-time">~25 min</span>
+</div>
+<p class="ex-obj"><strong>Objetivo:</strong> construir e testar uma skill de análise crítica no case que vocês escolheram. A saída não é texto de chat — é um <strong>painel HTML</strong> que dá para reabrir.</p>
+
+<div class="step-block">
+<div class="step-block-head">
+<span class="step-block-num">Regras</span>
+</div>
+<div class="step-block-body">
+<ol>
+<li>Baixem o case da empresa mais parecida com o negócio de vocês.</li>
+<li>Construam a skill no agente, cobrindo os <strong>5 blocos</strong> abaixo (é o caminho do dinheiro do Dudu, não um framework novo).</li>
+<li>Rodem a skill nos dados do kit. Não inventem número fora do arquivo.</li>
+<li>O output final precisa incluir <strong>um arquivo HTML</strong> navegável — não só texto corrido.</li>
+</ol>
+</div>
+</div>
+
+<div class="step-block">
+<div class="step-block-head">
+<span class="step-block-num">5 blocos</span>
+<h4 class="step-block-title">O que a skill precisa considerar</h4>
+</div>
+<div class="step-block-body">
+<ol>
+<li><strong>Decisão e tese</strong> — uma tese falsificável: “Acreditamos que [intervenção] para [público] mudará [comportamento], gerará [resultado] e contribuirá para [impacto econômico]. Vamos considerar válida quando [critério, prazo, comparação].”</li>
+<li><strong>Mapa econômico</strong> — qual rota o case ataca: aumentar/preservar receita ou reduzir custo/proteger margem, no modelo da empresa (marketplace, SaaS B2B ou fintech).</li>
+<li><strong>Árvore de impacto</strong> — Input → Output → Outcome → Impacto, cada métrica rotulada leading ou lagging, e a camada Controle / Influência / Contribuição.</li>
+<li><strong>Teste de causalidade</strong> — evidência de cada elo, contrafactual, variável de confusão (o mesmo músculo do Think).</li>
+<li><strong>Alertas de desvio</strong> — o painel sinaliza quando a métrica sai do esperado, não só mostra o número atual.</li>
+</ol>
+<p class="tip">Travou na skill? Use o O.C.A.R.E.O da manhã como esqueleto (Objetivo, Contexto, Ações, Regras, Exemplos, Output).</p>
+</div>
+</div>
+
+<div class="step-block">
+<div class="step-block-head">
+<span class="step-block-num">1</span>
+<span class="step-block-time">1–2 min</span>
+<h4 class="step-block-title">Baixar o case</h4>
+</div>
+<div class="step-block-body">
+<p>ZIP acima, ou na seção Empresas. Anexe no Claude / ChatGPT, ou descompacte na pasta do Cursor.</p>
+</div>
+</div>
+
+<div class="step-block">
+<div class="step-block-head">
+<span class="step-block-num">2</span>
+<span class="step-block-time">5–6 min</span>
+<h4 class="step-block-title">Construir a skill</h4>
+</div>
+<div class="step-block-body">
+<p>Cole no agente. No Cursor, peça para gravar em <code>.cursor/skills/product-sense-money-path/SKILL.md</code>. No ChatGPT ou Claude, siga o tutorial acima.</p>
+<div class="prompt-stack">
+<p class="prompt-label"><span class="pa-eyebrow pa-eyebrow--red">Prompt</span></p>
+<pre class="code-block code-block--prompt"><code>Crie e salve uma skill chamada "Product Sense · Caminho do dinheiro".
+
+Eu já tenho a skill Devil's Advocate de Product Sense. Esta empilha nela: aplica o caminho do dinheiro do Connect num case de produto.
+
+Estruture com O.C.A.R.E.O (Objetivo, Contexto, Ações, Regras, Exemplos, Output).
+
+A skill SEMPRE cobre estes 5 blocos, nesta ordem:
+1. Decisão e tese — tese falsificável: “Acreditamos que [intervenção] para [público] mudará [comportamento], gerará [resultado] e contribuirá para [impacto econômico]. Vamos considerar válida quando [critério, prazo, comparação].”
+2. Mapa econômico — receita a aumentar/preservar ou custo/margem a proteger, no modelo do case (marketplace, SaaS B2B ou fintech).
+3. Árvore de impacto — Input → Output → Outcome → Impacto. Cada métrica: leading ou lagging. Cada elo: Controle, Influência ou Contribuição.
+4. Teste de causalidade — evidência de cada elo, contrafactual, variável de confusão. Não tratar correlação como causa.
+5. Alertas de desvio — o que faria o painel ficar amarelo ou vermelho, não só o número atual.
+
+Regras:
+- Não inventar número fora dos arquivos que eu anexar. Se faltar dado, escrever “lacuna”.
+- Pedir minha leitura humana do case antes de concluir.
+- Não apagar nem substituir o Devil's Advocate.
+
+Confirme quando a skill estiver salva e diga como eu aciono.</code></pre>
+</div>
+</div>
+</div>
+
+<div class="step-block">
+<div class="step-block-head">
+<span class="step-block-num">3–4</span>
+<span class="step-block-time">8–9 min</span>
+<h4 class="step-block-title">Rodar no case e gerar o HTML</h4>
+</div>
+<div class="step-block-body">
+<p>Anexe o kit (ou aponte a pasta). Depois peça o painel. Um único <code>.html</code> com CSS inline — não é projeto de front-end.</p>
+<div class="prompt-stack">
+<p class="prompt-label"><span class="pa-eyebrow pa-eyebrow--red">Prompt</span></p>
+<pre class="code-block code-block--prompt"><code>Use a skill Product Sense · Caminho do dinheiro.
+
+Case: [Arena Match | Arena Pipeline | Arena Cash].
+Arquivos anexados: o kit desta empresa.
+
+Aplique os 5 blocos. Não invente dado. Se faltar número, marque lacuna.
+
+Em seguida gere UM arquivo HTML (CSS inline, uma página) com:
+- Cabeçalho: nome da empresa, data de hoje, a tese em uma frase
+- Árvore de impacto: tabela ou cards Input / Output / Outcome / Impacto, com leading vs lagging
+- Indicadores: cards com números do kit e badge verde / amarelo / vermelho para os alertas de desvio
+- Recomendação: decisão sugerida + nível de confiança
+
+Visual simples, legível em projector. Sem dependência externa.</code></pre>
+</div>
+<p>Salve o HTML e abra no browser. Revise antes de mostrar: tese amarra as métricas? Leading e lagging estão no lugar certo?</p>
+</div>
+</div>
+
+<div class="step-block">
+<div class="step-block-head">
+<span class="step-block-num">Debrief</span>
+<span class="step-block-time">5 min</span>
+<h4 class="step-block-title">Se o Lucas chamar a sua tela</h4>
+</div>
+<div class="step-block-body">
+<ul>
+<li>Qual tese vocês testaram?</li>
+<li>Por que esse leading, e não outro?</li>
+<li>Se fosse decisão real, vocês confiariam neste painel para agir?</li>
+</ul>
+<p class="tip">O que vocês construíram não foi uma análise. Foi um sistema que roda essa análise de novo, mais rápido, na próxima vez.</p>
+</div>
+</div>
+</div>
 </section>
 </article>
 

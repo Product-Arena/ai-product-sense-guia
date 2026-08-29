@@ -2959,6 +2959,23 @@ details.nested pre {
   pointer-events: none;
   object-fit: contain;
 }
+.media-gif-slot--playable video,
+.media-gif-slot--playable .media-gif-slot__video {
+  pointer-events: auto;
+}
+.two-col .media-gif-slot img,
+.two-col .media-gif-slot video,
+.two-col .media-gif-slot__video {
+  max-width: 100%;
+}
+.tutorial-tool {
+  margin: 0 0 var(--s-3);
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+}
 .media-gif-slot__caption {
   margin: var(--s-3) 0 0;
   font-size: var(--text-sm);

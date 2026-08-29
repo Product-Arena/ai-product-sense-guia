@@ -4,6 +4,8 @@ Thumbs.db
 
 # Local-only leftovers from the Cursor na prática HTML copy
 *.mp4
+!assets/creating-skill-chatgpt.mp4
+!assets/creating-skill-claude.mp4
 open-workspace.gif
 cursor-workspace.zip
 .replit

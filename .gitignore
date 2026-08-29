@@ -1,0 +1,12 @@
+.DS_Store
+Thumbs.db
+.vercel
+
+# Local-only leftovers from the Cursor na prática HTML copy
+*.mp4
+open-workspace.gif
+cursor-workspace.zip
+.replit
+REPLIT.md
+start-my-day-arenacash-reference.md
+ementa.html

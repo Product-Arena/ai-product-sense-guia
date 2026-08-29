@@ -130,6 +130,7 @@ function initGuideInteractions() {
       const afterLayout = () => {
         scrollToEl(target);
         history.replaceState(null, '', `#${id}`);
+        setActiveSideLink(id);
       };
       // Dois frames após abrir <details> para o layout estabilizar antes de rolar
       requestAnimationFrame(() => requestAnimationFrame(afterLayout));
@@ -146,7 +147,10 @@ function initGuideInteractions() {
         : 'conteudo';
       collapseDetailsForSideNav(hashId, hashScope);
       if (target) {
-        requestAnimationFrame(() => scrollToEl(target));
+        requestAnimationFrame(() => {
+          scrollToEl(target);
+          setActiveSideLink(hashId);
+        });
       }
     });
   }
@@ -163,47 +167,59 @@ function initGuideInteractions() {
         requestAnimationFrame(() => requestAnimationFrame(() => {
           scrollToEl(target);
           history.replaceState(null, '', `#${target.id}`);
+          setActiveSideLink(target.id);
         }));
       }
     });
   });
 
-  // Sidebar: highlight do bloco visível
+  // Sidebar: último bloco cuja borda superior já passou da topbar.
+  // IntersectionObserver só vê o que mudou no callback — num bloco longo (Build)
+  // o anterior (Connect) ficava preso como ativo.
   const sideLinks = document.querySelectorAll('.side-list a, .side-nav-sub-list a');
-  // Não observar blocos-pai quando há subseções — senão o spy “ganha” do subtópico
   const blocks = Array.from(
     document.querySelectorAll(
       '#conteudo .block[id], #apendice .appendix-section[id], #apendice .apendice-block[id]'
     )
   );
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      const visible = entries
-        .filter((e) => e.isIntersecting)
-        .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-      if (!visible.length) return;
+  function setActiveSideLink(id) {
+    if (!id) return;
+    sideLinks.forEach((link) => {
+      link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+    });
+    const target = document.getElementById(id);
+    const scope = target?.closest('#apendice') ? 'apendice' : 'conteudo';
+    DAY_GROUPS.forEach(group => {
+      const el = document.getElementById(group.id);
+      if (!el) return;
+      el.open = group.scope === scope && targetMatchesGroup(id, group);
+    });
+    NAV_GROUPS.forEach(group => {
+      const el = document.getElementById(group.id);
+      if (!el) return;
+      el.open = group.scope === scope && targetMatchesGroup(id, group);
+    });
+  }
 
-      const id = visible[0].target.id;
-      sideLinks.forEach((link) => {
-        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-      });
-      const scope = visible[0].target.closest('#apendice') ? 'apendice' : 'conteudo';
-      DAY_GROUPS.forEach(group => {
-        const el = document.getElementById(group.id);
-        if (!el) return;
-        el.open = group.scope === scope && targetMatchesGroup(id, group);
-      });
-      NAV_GROUPS.forEach(group => {
-        const el = document.getElementById(group.id);
-        if (!el) return;
-        el.open = group.scope === scope && targetMatchesGroup(id, group);
-      });
-    },
-    { rootMargin: `-${getScrollOffset()}px 0px -55% 0px`, threshold: 0 }
-  );
+  function syncSideNavFromScroll() {
+    const probe = getScrollOffset() + 8;
+    let current = null;
+    blocks.forEach((el) => {
+      if (el.getBoundingClientRect().top - probe <= 0) current = el;
+    });
+    if (current) setActiveSideLink(current.id);
+  }
 
-  blocks.forEach((b) => b.id && observer.observe(b));
+  let spyRaf = 0;
+  window.addEventListener('scroll', () => {
+    if (spyRaf) return;
+    spyRaf = requestAnimationFrame(() => {
+      spyRaf = 0;
+      syncSideNavFromScroll();
+    });
+  }, { passive: true });
+  syncSideNavFromScroll();
 
   // Scroll to top
   const topBtn = document.getElementById('scroll-top');
@@ -234,7 +250,7 @@ function initGuideInteractions() {
   // Tracking de progresso — checkbox em cada passo + barra por exercício
   // =========================================================
 
-  const STATE_KEY = 'curso-cursor-pms-ed3/progress/v1';
+  const STATE_KEY = 'ai-product-sense-guia/progress/v2';
   const state = loadState();
 
   function loadState() {
@@ -317,7 +333,7 @@ function initGuideInteractions() {
     if (!numEl) return;
     const exNum = numEl.textContent.trim();
 
-    const steps = attachStepCheckboxes(ex, `ex-${exNum}`, () => updateExerciseProgress(ex));
+    const steps = attachStepCheckboxes(ex, ex.id || `ex-${exNum}`, () => updateExerciseProgress(ex));
 
     if (!steps.length) return;
 

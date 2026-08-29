@@ -23,6 +23,19 @@
 <h2>Think</h2>
 <p class="block-quote">Product Sense e pensamento crítico.</p>
 </header>
+<section class="concept" id="think-gmat">
+<h3>Competição GMAT</h3>
+<p>Com o Edu. Abram o link <strong>quando ele pedir</strong> — não antes. Entram com o e-mail; a sala começa junta.</p>
+<div class="kit-grid">
+<a class="kit-item" href="https://dinamica-gmat.vercel.app" rel="noopener noreferrer" target="_blank">
+<span class="kit-icon">LIVE</span>
+<div>
+<strong>Dinâmica GMAT</strong>
+<span>Duas questões ao vivo · Product Arena</span>
+</div>
+</a>
+</div>
+</section>
 <section class="exercises" id="think-exercicios">
 <p class="tip">O Edu apresenta o case nos slides. Aqui está o que vocês <strong>fazem</strong>. Não precisa baixar arquivo nem anexar o kit — na hora da IA, cole o contexto e o prompt abaixo.</p>
 
@@ -235,7 +248,7 @@ Nossa confiança (0 a 100): [ ]</code></pre>
 <ul>
 <li><strong>Claude:</strong> importe o ZIP como skill. Plano B: anexe ou cole o <code>SKILL.md</code>.</li>
 <li><strong>ChatGPT:</strong> cole o <code>SKILL.md</code> nas instruções do Project.</li>
-<li><strong>Cursor:</strong> descompacte o ZIP em <code>.cursor/skills/product-sense-devils-advocate/</code> (o nome da pasta tem que bater com o <code>name:</code> do arquivo).</li>
+<li><strong>Cursor:</strong> descompacte o ZIP em <code>.cursor/skills/</code>. A pasta de dentro do ZIP já se chama <code>product-sense-devils-advocate</code> — igual ao <code>name:</code> do arquivo. Não crie essa pasta antes: senão a skill fica uma pasta dentro da outra e o agente não carrega.</li>
 </ul>
 <p>Pronto quando o agente responde no formato da skill (O que está sólido / Premissas / Perguntas / …), não com um texto genérico.</p>
 </div>
@@ -440,7 +453,7 @@ Aplique os 7 guardrails. Não invente dados. Formato de saída da skill.</code><
 </div>
 </section>
 <section class="exercises" id="build-exercicios">
-<p class="tip">Individual (cada um constrói a própria skill). Sentados em trios — podem trocar ideia. Claude, ChatGPT ou Cursor. O Devil's Advocate da manhã <strong>fica</strong>; esta skill empilha nele.</p>
+<p class="tip">Individual (cada um constrói a própria skill). Sentados em trios — podem trocar ideia. Claude, ChatGPT ou Cursor. O Devil's Advocate da manhã <strong>fica</strong>; esta skill empilha nele. Se pulou o Augment, baixe o ZIP da skill lá em cima e instale antes.</p>
 
 <div class="exercise-flat" id="ex-build-01-painel" data-exercise-num="01">
 <div class="exercise-flat__meta">
@@ -498,12 +511,15 @@ Aplique os 7 guardrails. Não invente dados. Formato de saída da skill.</code><
 <h4 class="step-block-title">Construir a skill</h4>
 </div>
 <div class="step-block-body">
-<p>Cole no agente. No Cursor, peça para gravar em <code>.cursor/skills/product-sense-money-path/SKILL.md</code>. No ChatGPT ou Claude, siga o tutorial acima.</p>
+<p>Cole no agente. No Cursor, peça para gravar em <code>.cursor/skills/product-sense-money-path/SKILL.md</code>. No ChatGPT ou Claude, o título visível pode ser “Product Sense · Caminho do dinheiro”; a pasta/arquivo continua <code>product-sense-money-path</code>. O ZIP <code>map-product-impact</code> acima é só referência — não entreguem ele no lugar da skill de vocês.</p>
 <div class="prompt-stack">
 <p class="prompt-label"><span class="pa-eyebrow pa-eyebrow--red">Prompt</span></p>
-<pre class="code-block code-block--prompt"><code>Crie e salve uma skill chamada "Product Sense · Caminho do dinheiro".
+<pre class="code-block code-block--prompt"><code>Crie e salve uma skill.
 
-Eu já tenho a skill Devil's Advocate de Product Sense. Esta empilha nela: aplica o caminho do dinheiro do Connect num case de produto.
+Pasta e name (Cursor / ZIP): product-sense-money-path
+Título visível no chat: Product Sense · Caminho do dinheiro
+
+Eu já tenho a skill product-sense-devils-advocate. Esta empilha nela: aplica o caminho do dinheiro do Connect num case de produto.
 
 Estruture com O.C.A.R.E.O (Objetivo, Contexto, Ações, Regras, Exemplos, Output).
 
@@ -515,6 +531,7 @@ A skill SEMPRE cobre estes 5 blocos, nesta ordem:
 5. Alertas de desvio — o que faria o painel ficar amarelo ou vermelho, não só o número atual.
 
 Regras:
+- No Cursor, gravar em .cursor/skills/product-sense-money-path/SKILL.md
 - Não inventar número fora dos arquivos que eu anexar. Se faltar dado, escrever “lacuna”.
 - Pedir minha leitura humana do case antes de concluir.
 - Não apagar nem substituir o Devil's Advocate.
@@ -534,7 +551,7 @@ Confirme quando a skill estiver salva e diga como eu aciono.</code></pre>
 <p>Anexe o kit (ou aponte a pasta). Depois peça o painel. Um único <code>.html</code> com CSS inline — não é projeto de front-end.</p>
 <div class="prompt-stack">
 <p class="prompt-label"><span class="pa-eyebrow pa-eyebrow--red">Prompt</span></p>
-<pre class="code-block code-block--prompt"><code>Use a skill Product Sense · Caminho do dinheiro.
+<pre class="code-block code-block--prompt"><code>Use a skill product-sense-money-path (Product Sense · Caminho do dinheiro).
 
 Case: [Arena Match | Arena Pipeline | Arena Cash].
 Arquivos anexados: o kit desta empresa.
@@ -549,7 +566,7 @@ Em seguida gere UM arquivo HTML (CSS inline, uma página) com:
 
 Visual simples, legível em projector. Sem dependência externa.</code></pre>
 </div>
-<p>Salve o HTML e abra no browser. Revise antes de mostrar: tese amarra as métricas? Leading e lagging estão no lugar certo?</p>
+<p><strong>Como salvar o HTML:</strong> no Cursor, peça para gravar um arquivo <code>.html</code> na pasta do case. No Claude, baixe o artefato. No ChatGPT, copie o código, cole num arquivo <code>painel.html</code> no computador e abra no browser. Revise antes de mostrar: tese amarra as métricas? Leading e lagging estão no lugar certo?</p>
 </div>
 </div>
 

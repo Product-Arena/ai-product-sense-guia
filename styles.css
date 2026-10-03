@@ -477,65 +477,173 @@ em { font-style: italic; color: var(--fg-muted); }
 .agenda-item.ghost { cursor: default; }
 .agenda-item.ghost .agenda-tag { background: var(--bg-muted); color: var(--fg-muted); }
 
-.agenda--day {
+.tamti-scroll {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.tamti__rail,
+.tamti__cols {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: var(--s-4);
-  align-items: stretch;
+  column-gap: var(--s-4);
 }
-.agenda-card {
+
+.tamti__rail {
+  margin-bottom: calc(var(--s-3) + 20px);
+}
+
+.tamti__period {
+  grid-row: 1;
   display: flex;
-  flex-direction: column;
-  min-height: 220px;
-  padding: var(--s-5);
-  background: var(--pa-red-tint);
-  border: 0;
-  border-radius: 4px;
-  color: inherit;
-  text-align: left;
-}
-.agenda-card__slot {
+  align-items: center;
+  gap: 5px;
   font-family: var(--font-display);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: var(--tracking-caps);
   text-transform: uppercase;
   color: var(--pa-red);
-  margin-bottom: var(--s-3);
+  padding-bottom: var(--s-2);
 }
-.agenda-card__name {
-  font-family: var(--font-display);
-  font-size: var(--text-2xl);
-  font-weight: 700;
-  letter-spacing: var(--tracking-tight);
-  color: var(--fg);
+
+.tamti__period-mark {
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: 0;
+  flex: 0 0 auto;
+}
+
+.tamti__period--morning { grid-column: 1 / 3; }
+.tamti__period--afternoon { grid-column: 3 / 6; }
+
+.tamti__bar {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  height: 8px;
+  background-image:
+    linear-gradient(var(--pa-red), var(--pa-red)),
+    linear-gradient(
+      90deg,
+      #ffe4e4 0% 18%,
+      #ffb3b4 18% 38%,
+      #ff8f91 38% 58%,
+      #ff6466 58% 78%,
+      var(--pa-red) 78% 100%
+    );
+  background-size: 18% 8px, 100% 4px;
+  background-position: right center, center;
+  background-repeat: no-repeat;
+}
+
+.tamti__cols {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: stretch;
+}
+
+.tamti__col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow-x: clip;
+  container-type: inline-size;
+}
+
+.tamti__letter {
+  display: block;
   margin: 0 0 var(--s-3);
+  max-width: 100%;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: clamp(64px, 8vw, 148px);
+  font-size: clamp(64px, 72cqi, 148px);
+  line-height: 0.78;
+  letter-spacing: -0.045em;
 }
-.agenda-card__desc {
-  font-size: var(--text-sm);
-  line-height: 1.45;
-  color: var(--fg-muted);
+
+.tamti__col:nth-child(1) .tamti__letter { color: #ffc8c9; }
+.tamti__col:nth-child(2) .tamti__letter { color: #ffb0b2; }
+.tamti__col:nth-child(3) .tamti__letter { color: #ff8a8c; }
+.tamti__col:nth-child(4) .tamti__letter { color: #ff6466; }
+.tamti__col:nth-child(5) .tamti__letter { color: var(--pa-red); }
+
+.tamti__name {
+  margin: 0 0 var(--s-2);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--fg);
+}
+
+.tamti__desc {
   margin: 0;
   flex: 1;
+  font-size: var(--text-sm);
+  line-height: 1.4;
+  color: var(--fg);
 }
-.agenda-card__foot {
+
+.tamti__foot {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--s-3);
-  margin-top: var(--s-6);
+  gap: 6px;
+  margin-top: auto;
+  padding-top: var(--s-5);
+  min-width: 0;
 }
-.agenda-card__time {
+
+.tamti__time {
   font-family: var(--font-mono);
   font-size: 12px;
+  font-weight: 500;
   color: var(--fg-subtle);
+  white-space: nowrap;
 }
-.agenda-card__who {
-  width: 36px;
-  height: 36px;
+
+.tamti__photo {
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   object-fit: cover;
-  display: block;
+  flex-shrink: 0;
+}
+
+.tamti__who {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--fg);
+  white-space: nowrap;
+}
+
+@media (max-width: 980px) {
+  .tamti__cols {
+    grid-template-columns: 1fr;
+    row-gap: var(--s-8);
+  }
+
+  .tamti__rail {
+    grid-template-columns: 2fr 3fr;
+    column-gap: var(--s-3);
+    row-gap: 0;
+    margin-bottom: calc(var(--s-6) + 20px);
+  }
+
+  .tamti__period--morning { grid-column: 1; }
+  .tamti__period--afternoon { grid-column: 2; }
+  .tamti__bar { grid-column: 1 / -1; }
+
+  .tamti__letter {
+    font-size: clamp(72px, 22vw, 112px);
+  }
 }
 
 /* =========================================================
@@ -833,6 +941,10 @@ em { font-style: italic; color: var(--fg-muted); }
 }
 .exercise-flat .step-block:last-of-type {
   margin-bottom: 0;
+}
+/* Beats .step-block + .step-block. Closing debrief only. */
+.exercise-flat > .step-block.step-block--debrief {
+  margin-top: var(--s-8);
 }
 .exercise-flat > .tip {
   margin-top: var(--s-2);
@@ -3282,7 +3394,6 @@ details.nested pre {
   .top-nav { display: none; }
   .agenda-item { grid-template-columns: 100px 1fr; }
   .agenda-tag { grid-column: 2; justify-self: start; margin-top: 4px; }
-  .agenda--day { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .block { padding: var(--s-6); }
   .exercise summary { grid-template-columns: 44px 1fr; gap: var(--s-3); }
   .ex-time { grid-column: 2; justify-self: start; margin-top: 4px; }
@@ -3305,7 +3416,6 @@ details.nested pre {
   .section-head h2 { font-size: 28px; }
   .agenda-item { grid-template-columns: 1fr; }
   .agenda-item .agenda-tag { justify-self: start; }
-  .agenda--day { grid-template-columns: 1fr; }
   .hero h1 { font-size: 42px; }
 }
 
@@ -3437,14 +3547,15 @@ details.nested pre {
 }
 .empresas-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: minmax(0, 1fr);
   gap: var(--s-6);
   margin-top: var(--s-7);
   align-items: stretch;
 }
 .company-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: clamp(240px, 28%, 360px) minmax(0, 1fr);
+  align-items: stretch;
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   background: var(--bg-raised);
@@ -3454,15 +3565,15 @@ details.nested pre {
 }
 .company-card:hover { border-color: var(--pa-red); }
 .company-card__logo {
-  height: 152px;
-  flex-shrink: 0;
+  min-height: 152px;
+  height: auto;
   box-sizing: border-box;
   background: var(--bg);
   padding: var(--s-5) var(--s-6);
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid var(--border);
+  border-right: 1px solid var(--border);
 }
 .company-card__logo img {
   max-width: 100%;
@@ -3518,7 +3629,14 @@ details.nested pre {
   grid-template-columns: 44px 1fr auto;
 }
 @media (max-width: 960px) {
-  .empresas-grid { grid-template-columns: 1fr; }
+  .empresas-grid { grid-template-columns: minmax(0, 1fr); }
+  .company-card { display: flex; flex-direction: column; }
+  .company-card__logo {
+    height: 152px;
+    flex-shrink: 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
 }
 
 /* Kit row without download (edition 3 placeholders) */
@@ -3581,4 +3699,74 @@ details.nested pre {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+/* Day close — TAMTI wrap-up, sibling of the block cards */
+.wrap-up {
+  padding: var(--s-10) var(--s-8);
+  background: var(--bg-muted);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+}
+.wrap-up h3 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-snug);
+  margin: 0 0 var(--s-8);
+}
+.wrap-up__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--s-4);
+}
+.wrap-up__item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-3);
+  min-width: 0;
+  margin: 0;
+  padding: var(--s-5);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+}
+.wrap-up__letter {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  letter-spacing: var(--tracking-tight);
+  line-height: var(--leading-tight);
+  text-transform: uppercase;
+  color: var(--fg);
+}
+.wrap-up__line {
+  font-size: var(--text-sm);
+  line-height: var(--leading-relaxed);
+  color: var(--fg-muted);
+}
+
+@media (max-width: 1360px) {
+  .wrap-up {
+    padding: var(--s-6);
+  }
+  .wrap-up__list {
+    grid-template-columns: 1fr;
+  }
+  .wrap-up__item {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: var(--s-3) var(--s-4);
+  }
+  .wrap-up__letter {
+    flex: 0 0 4.8em;
+  }
+  .wrap-up__line {
+    flex: 1 1 12rem;
+  }
 }

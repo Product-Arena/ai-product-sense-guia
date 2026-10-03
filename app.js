@@ -174,8 +174,8 @@ function initGuideInteractions() {
   });
 
   // Sidebar: último bloco cuja borda superior já passou da topbar.
-  // IntersectionObserver só vê o que mudou no callback — num bloco longo (Build)
-  // o anterior (Connect) ficava preso como ativo.
+  // IntersectionObserver só vê o que mudou no callback — num bloco longo (Track)
+  // o anterior (Map) ficava preso como ativo.
   const sideLinks = document.querySelectorAll('.side-list a, .side-nav-sub-list a');
   const blocks = Array.from(
     document.querySelectorAll(

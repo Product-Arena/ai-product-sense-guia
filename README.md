@@ -1,35 +1,17 @@
 # Guia do aluno — AI Product Sense
 
-Site estático do guia de sala (Product Arena). Think → Augment → Connect → Build.
+Site estático com **TAMTI: Think → Amplify → Map → Track → Impact**. TRACK usa os CSV da Arena Cash: cada pessoa copia os arquivos para o próprio Drive e o ChatGPT ou o Claude lê essa cópia.
 
-**Repositório:** [Product-Arena/ai-product-sense-guia](https://github.com/Product-Arena/ai-product-sense-guia)  
-**Produção:** [https://ai-product-sense-guia.vercel.app](https://ai-product-sense-guia.vercel.app)
-
-Cada push em `main` publica de novo na Vercel.
-
-Cópia de trabalho no workspace do Lucas: `learning/ai-product-sense/guia-do-aluno/`.  
-Não edite o guia do [Cursor na prática](https://github.com/Product-Arena/cursor-para-pms).
+Esta pasta é a versão de trabalho em **luccmattos/ai-product-sense**. O repositório anterior de publicação é [Product-Arena/ai-product-sense-guia](https://github.com/Product-Arena/ai-product-sense-guia), com URL histórica [ai-product-sense-guia.vercel.app](https://ai-product-sense-guia.vercel.app). Atualizar esta cópia não comprova atualização daquele repositório ou do site publicado.
 
 ## Local
 
-```bash
-./serve-local.sh --open
-```
+Execute `./serve-local.sh --open`, ou sirva esta pasta por HTTP. URL padrão: http://127.0.0.1:8846/ . Abrir por file:// impede carregar os partials.
 
-URL: [http://127.0.0.1:8846/](http://127.0.0.1:8846/)
+## Publicação
 
-Sempre sirva por HTTP. Abrir `index.html` com `file://` quebra os partials.
+Confirmar o repositório/pasta conectados ao projeto Vercel antes de publicar. O GitHub deste trabalho é a fonte atualizada; não executar deploy nem modificar o repositório anterior implicitamente.
 
-## Deploy (Vercel)
+## Conteúdo
 
-O projeto na Vercel está ligado a este repositório. Fluxo:
-
-1. Commit na pasta deste guia
-2. `git push origin main`
-3. A Vercel publica sozinha
-
-Não use `vercel deploy` no dia a dia.
-
-## Conteúdo que entra no Git
-
-HTML, CSS, JS, logos, fotos dos instrutores e os ZIPs dos cases Arena. Vídeos e prints do curso Cursor na prática ficam só na máquina (`.gitignore`).
+HTML, CSS, JS, logos, fotos e ZIPs dos cases. A entrega mínima do exercício é briefing/painel e rotina testada; skill nativa, código e publicação são opcionais.

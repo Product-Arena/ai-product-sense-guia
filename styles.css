@@ -2581,6 +2581,9 @@ details.nested pre {
   border-radius: var(--radius-sm);
   margin: 0;
 }
+.tip.tip--after-agenda {
+  margin-top: var(--s-8);
+}
 
 .best-practices {
   background: var(--bg-muted);
